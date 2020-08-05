@@ -1,21 +1,35 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
-    <EnableDefaultContentItems>false</EnableDefaultContentItems>
-    <OutputType>Library</OutputType>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\OrchardCore\OrchardCore.AsTheme\OrchardCore.AsTheme.csproj" />
-    <ProjectReference Include="..\..\OrchardCore\Orchard.ContentManagement\Orchard.ContentManagement.csproj" />
-    <ProjectReference Include="..\..\OrchardCore\Orchard.ResourceManagement\Orchard.ResourceManagement.csproj" />
-    <ProjectReference Include="..\..\OrchardCore\Orchard.DisplayManagement\Orchard.DisplayManagement.csproj" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.2" />
+    <Compile Remove="wwwroot\node_modules\**" />
+    <EmbeddedResource Remove="wwwroot\node_modules\**" />
+    <None Remove="wwwroot\node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\OrchardCore\OrchardCore.Theme.Targets\OrchardCore.Theme.Targets.csproj" />
+    <ProjectReference Include="..\..\OrchardCore\OrchardCore.DisplayManagement\OrchardCore.DisplayManagement.csproj" />
+    <ProjectReference Include="..\..\OrchardCore\OrchardCore.ResourceManagement.Abstractions\OrchardCore.ResourceManagement.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="**\*.less;**\*.scss;" />
+    <EmbeddedResource Remove="wwwroot\about.html" />
+    <EmbeddedResource Remove="wwwroot\contact.html" />
+    <EmbeddedResource Remove="wwwroot\gulpfile.js" />
+    <EmbeddedResource Remove="wwwroot\index.html" />
+    <EmbeddedResource Remove="wwwroot\package-lock.json" />
+    <EmbeddedResource Remove="wwwroot\package.json" />
+    <EmbeddedResource Remove="wwwroot\post.html" />
   </ItemGroup>
 
 </Project>
